@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper/widgets/cacheNetworkImageView.dart';
 
 class FullScreen extends StatelessWidget {
   final String imageUrl;
@@ -8,7 +9,11 @@ class FullScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Image.network(imageUrl)),
+      body: Center(
+        child: CacheNetworkImageView(
+          imageUrl: imageUrl,
+        ),
+      ),
     );
   }
 }

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:wallpaper/wallpaper_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wallpaper/screens/wallpaper_screen.dart';
+
+import 'blocs/internet_bloc/internet_checker_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => InternetCheckerBloc())],
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -10,12 +15,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Wallpaper(),
+      home: Wallpaper(),
     );
   }
 }
