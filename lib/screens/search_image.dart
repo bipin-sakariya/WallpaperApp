@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallpaper/blocs/internet_bloc/internet_checker_bloc.dart';
-import 'package:wallpaper/utils/api_services/common_strings.dart';
 
+import '../blocs/internet_bloc/internet_checker_bloc.dart';
+import '../utils/api_services/common_strings.dart';
 import '../utils/enums/enums.dart';
 import '../widgets/common_use_widget.dart';
 

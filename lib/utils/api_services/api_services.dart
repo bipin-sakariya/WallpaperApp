@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:wallpaper/utils/api_services/server_constant.dart';
+import 'package:wallpaper_app/utils/api_services/server_constant.dart';
 
 import 'server.dart';
 

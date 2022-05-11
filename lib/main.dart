@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wallpaper/screens/wallpaper_screen.dart';
+import 'package:wallpaper_app/screens/wallpaper_screen.dart';
 
 import 'blocs/internet_bloc/internet_checker_bloc.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Wallpaper(),
+      home: WallpaperScreen(),
     );
   }
 }

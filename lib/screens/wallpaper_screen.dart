@@ -2,21 +2,21 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:wallpaper/blocs/internet_bloc/internet_checker_bloc.dart';
-import 'package:wallpaper/screens/search_image.dart';
-import 'package:wallpaper/utils/api_services/common_strings.dart';
+import 'package:wallpaper_app/screens/search_image.dart';
 
+import '../blocs/internet_bloc/internet_checker_bloc.dart';
+import '../utils/api_services/common_strings.dart';
 import '../utils/enums/enums.dart';
 import '../widgets/common_use_widget.dart';
 
-class Wallpaper extends StatefulWidget {
-  const Wallpaper({Key? key}) : super(key: key);
+class WallpaperScreen extends StatefulWidget {
+  const WallpaperScreen({Key? key}) : super(key: key);
 
   @override
-  _WallpaperState createState() => _WallpaperState();
+  _WallpaperScreenState createState() => _WallpaperScreenState();
 }
 
-class _WallpaperState extends State<Wallpaper>
+class _WallpaperScreenState extends State<WallpaperScreen>
     with SingleTickerProviderStateMixin {
   TabController? _tabController;
   List images = [];
