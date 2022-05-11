@@ -49,90 +49,83 @@ class _FullScreenState extends State<FullScreen> {
           margin: EdgeInsets.only(top: 20),
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                downloading
-                    ? imageDownloadDialog()
-                    : CacheNetworkImageView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              downloading
+                  ? SizedBox(
+                      child: imageDownloadDialog(),
+                      height: 300,
+                    )
+                  : SizedBox(
+                      height: 300,
+                      child: CacheNetworkImageView(
                         imageUrl: widget.imageUrl,
                       ),
-                /*    Row(
-                  children: [
-                    GestureDetector(
-                      child: const Icon(Icons.save_alt_rounded),
-                      onTap: () async {
-                        return await downloadImage(context);
-                      },
                     ),
-                  ],
-                ),*/
-                ElevatedButton(
-                  onPressed: () async {
-                    return await downloadImage(context);
-                  },
-                  child: Text("please download the image"),
-                ),
-                ElevatedButton(
-                  onPressed: _isDisable
-                      ? null
-                      : () async {
-                          var width = MediaQuery.of(context).size.width;
-                          var height = MediaQuery.of(context).size.height;
-                          home = await Wallpaper.homeScreen(
-                              location: DownloadLocation.EXTERNAL_DIRECTORY,
-                              options: RequestSizeOptions.RESIZE_FIT,
-                              width: width,
-                              height: height);
-                          setState(() {
-                            downloading = false;
-                            home = home;
-                          });
-                          print("Task Done");
-                        },
-                  child: Text(home),
-                ),
-                ElevatedButton(
-                  onPressed: _isDisable
-                      ? null
-                      : () async {
-                          lock = await Wallpaper.lockScreen();
-                          setState(() {
-                            downloading = false;
-                            lock = lock;
-                          });
-                          print("Task Done");
-                        },
-                  child: Text(lock),
-                ),
-                ElevatedButton(
-                  onPressed: _isDisable
-                      ? null
-                      : () async {
-                          both = await Wallpaper.bothScreen();
-                          setState(() {
-                            downloading = false;
-                            both = both;
-                          });
-                          print("Task Done");
-                        },
-                  child: Text(both),
-                ),
-                ElevatedButton(
-                  onPressed: _isDisable
-                      ? null
-                      : () async {
-                          system = await Wallpaper.systemScreen();
-                          setState(() {
-                            downloading = false;
-                            system = system;
-                          });
-                          print("Task Done");
-                        },
-                  child: Text(system),
-                ),
-              ],
-            ),
+              ElevatedButton(
+                onPressed: () async {
+                  return await downloadImage(context);
+                },
+                child: Text("please download the image"),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: _isDisable
+                          ? null
+                          : () async {
+                              var width = MediaQuery.of(context).size.width;
+                              var height = MediaQuery.of(context).size.height;
+                              home = await Wallpaper.homeScreen(
+                                  location: DownloadLocation.EXTERNAL_DIRECTORY,
+                                  options: RequestSizeOptions.RESIZE_FIT,
+                                  width: width,
+                                  height: height);
+                              setState(() {
+                                downloading = false;
+                                home = home;
+                              });
+                              print("Task Done");
+                            },
+                      child: Text(home),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: _isDisable
+                          ? null
+                          : () async {
+                              lock = await Wallpaper.lockScreen();
+                              setState(() {
+                                downloading = false;
+                                lock = lock;
+                              });
+                              print("Task Done");
+                            },
+                      child: Text(lock),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: _isDisable
+                          ? null
+                          : () async {
+                              both = await Wallpaper.bothScreen();
+                              setState(() {
+                                downloading = false;
+                                both = both;
+                              });
+                              print("Task Done");
+                            },
+                      child: Text(both),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           )),
     );
   }
@@ -163,7 +156,7 @@ class _FullScreenState extends State<FullScreen> {
   }
 
   Widget imageDownloadDialog() {
-    return Container(
+    return SizedBox(
       height: 120.0,
       width: 200.0,
       child: Card(
@@ -171,8 +164,8 @@ class _FullScreenState extends State<FullScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            CircularProgressIndicator(),
-            SizedBox(height: 20.0),
+            const CircularProgressIndicator(),
+            const SizedBox(height: 20.0),
             Text(
               "Downloading File : $res",
               style: TextStyle(color: Colors.white),

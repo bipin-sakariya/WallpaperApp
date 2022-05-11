@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:wallpaper_app/screens/search_image.dart';
 
+import '../Modal/category_modal.dart';
 import '../blocs/internet_bloc/internet_checker_bloc.dart';
 import '../utils/api_services/common_strings.dart';
 import '../utils/enums/enums.dart';
+import '../widgets/category_tile.dart';
 import '../widgets/common_use_widget.dart';
 
 class WallpaperScreen extends StatefulWidget {
@@ -170,10 +172,20 @@ class _WallpaperScreenState extends State<WallpaperScreen>
                   child: TabBarView(
                     controller: _tabController,
                     children: [
-                      showWallpaperWidget(
-                          controller: _scrollControllerRecent,
-                          images: categoryImage,
-                          key: 'Category'),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        itemCount: categoryList.length,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            child: CategoriesTile(
+                              title: categoryList[index].categoriesName,
+                              imgUrl: categoryList[index].imgUrl,
+                            ),
+                          );
+                        },
+                      ),
                       showWallpaperWidget(
                           key: 'Recent',
                           controller: _scrollControllerRecent,
